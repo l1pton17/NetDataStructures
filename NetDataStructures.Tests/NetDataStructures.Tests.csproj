@@ -50,8 +50,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Trees\RedBlack\RedBlackTreeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Heaps\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetDataStructures\NetDataStructures.csproj">
+      <Project>{fca41e84-9597-4d1c-9fc9-a3ec470a698f}</Project>
+      <Name>NetDataStructures</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

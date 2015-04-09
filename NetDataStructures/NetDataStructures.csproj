@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -39,8 +40,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IEnumerableExtensions.cs" />
+    <Compile Include="Heaps\BinaryHeap.cs" />
+    <Compile Include="Heaps\HeapElements.cs" />
+    <Compile Include="Heaps\MaxHeap.cs" />
+    <Compile Include="Heaps\MinHeap.cs" />
+    <Compile Include="IKeyNavigator.cs" />
+    <Compile Include="IKeyValue.cs" />
+    <Compile Include="Monads.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Trees\BinaryTreeEnumerator.cs" />
+    <Compile Include="Trees\BinaryTreeHelper.cs" />
+    <Compile Include="Trees\BinaryTreeNodes.cs" />
+    <Compile Include="Trees\RedBlack\IRedBlackTree.cs" />
+    <Compile Include="Trees\Splay\SplayTreeHelper.cs" />
+    <Compile Include="Trees\VanEmdeBoas\VanEmdeBoasTree.cs" />
+    <Compile Include="Trees\IBinaryTreeNode.cs" />
+    <Compile Include="ISortedDataStructure.cs" />
+    <Compile Include="IDataStructure.cs" />
+    <Compile Include="Trees\ITree.cs" />
+    <Compile Include="Trees\ITreeNode.cs" />
+    <Compile Include="Trees\RedBlack\IRedBlackTreeNode.cs" />
+    <Compile Include="Trees\RedBlack\RedBlackInsertHelper.cs" />
+    <Compile Include="Trees\RedBlack\RedBlackMapTree.cs" />
+    <Compile Include="Trees\RedBlack\RedBlackRemoveHelper.cs" />
+    <Compile Include="Trees\RedBlack\RedBlackTree.cs" />
+    <Compile Include="Trees\RedBlack\RedBlackTreeBase.cs" />
+    <Compile Include="Trees\RedBlack\RedBlackTreeHelper.cs" />
+    <Compile Include="Trees\RedBlack\RedBlackTreeNodes.cs" />
+    <Compile Include="Trees\Splay\SplayTreeBase.cs" />
+    <Compile Include="Trees\TreeHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
