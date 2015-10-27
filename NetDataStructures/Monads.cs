@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NetDataStructures
 {
@@ -19,7 +15,16 @@ namespace NetDataStructures
 
         public static TResult Return<TInput, TResult>
             (this TInput o, Func<TInput, TResult> evaluator,
-            TResult failureValue)
+                Func<TResult> failureValueFactory)
+            where TInput : class
+        {
+            if (o == null) return failureValueFactory();
+            return evaluator(o);
+        }
+
+        public static TResult Return<TInput, TResult>
+            (this TInput o, Func<TInput, TResult> evaluator,
+                TResult failureValue)
             where TInput : class
         {
             if (o == null) return failureValue;
@@ -53,74 +58,5 @@ namespace NetDataStructures
             action(o);
             return o;
         }
-
-        #region Nullable
-
-        public static Nullable<TResult> With<TInput, TResult>
-            (this TInput o, Func<TInput, Nullable<TResult>> evaluator)
-            where TInput : class
-            where TResult : struct
-        {
-            if (o == null) return null;
-            return evaluator(o);
-        }
-
-        public static TResult With<TInput, TResult>
-            (this Nullable<TInput> o, Func<TInput, TResult> evaluator)
-            where TInput : struct
-            where TResult : class
-        {
-            if (!o.HasValue) return null;
-
-            return evaluator(o.Value);
-        }
-
-        public static Nullable<TResult> With<TInput, TResult>
-            (this Nullable<TInput> o, Func<TInput, Nullable<TResult>> evaluator)
-            where TInput : struct
-            where TResult : struct
-        {
-            if (!o.HasValue) return null;
-
-            return evaluator(o.Value);
-        }
-
-        public static TResult Return<TInput, TResult>
-            (this Nullable<TInput> o, Func<TInput, TResult> evaluator,
-            TResult failureValue)
-            where TInput : struct
-        {
-            if (!o.HasValue) return failureValue;
-
-            return evaluator(o.Value);
-        }
-
-        public static TResult Return<TInput, TResult>
-            (this Nullable<TInput> o, Func<TInput, TResult> evaluator)
-            where TInput : struct
-        {
-            if (!o.HasValue) return default(TResult);
-
-            return evaluator(o.Value);
-        }
-
-        public static Nullable<TInput> If<TInput>(this Nullable<TInput> o, Predicate<TInput> evaluator)
-            where TInput : struct
-        {
-            if (!o.HasValue) return null;
-
-            return evaluator(o.Value) ? o : null;
-        }
-
-        public static Nullable<TInput> Do<TInput>(this Nullable<TInput> o, Action<TInput> action)
-            where TInput : struct
-        {
-            if (!o.HasValue) return null;
-
-            action(o.Value);
-            return o;
-        }
-
-        #endregion
     }
 }
